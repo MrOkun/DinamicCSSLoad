@@ -1,0 +1,113 @@
+<DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+
+  </head>
+  <body .cross>
+
+    <h1>DinamicCSSLoad aka Theme changer (ENG)</h1>
+	<h1>DinamicCSSLoad, ака Смена темы (RU)</h1>
+	<!-- creating buttons for themes -->
+	<!-- создание кнопок для тем-->
+    <p><input type="button" id="dark" value=" Dark theme "></p>  
+    <p><input type="button" id="white" value=" White theme "></p>
+
+    <script type="text/javascript">
+
+   	//Стандартная тема, которая включится при открытии страницы.
+   	//Default theme that will be included when the page is opened.
+      window.onload = function (){
+      var filename = "white.css",sheet,i;
+      var fileref = document.createElement("link");//основная тема
+
+      fileref.setAttribute("rel", "stylesheet");
+      fileref.setAttribute("type", "text/css");
+      fileref.setAttribute("href", filename);
+
+      timerfunc = function (){
+          for (i=0;i<document.styleSheets.length;i++){
+              sheet = document.styleSheets[i].href;
+              if(sheet !== null && sheet.substr(sheet.length-filename.length) == filename)
+                  return readyfunc();
+          }
+          setTimeout(timerfunc,50);  
+      }
+
+      if (document.all){
+          fileref.attachEvent('onreadystatechange',function() {
+              if(fileref.readyState == 'complete' || fileref.readyState == 'loaded')
+                  readyfunc();
+          });
+      } else {
+          setTimeout(timerfunc,50);
+      }
+      document.getElementsByTagName("head")[0].appendChild(fileref);    
+  }
+ 	//тёмная тема
+ 	//dark theme
+ 	//при клике на кнопку, включится эта тема
+    // when you click on the button, this theme will be turned on 
+      dark.onclick = function (){ 
+      var filename = "dark.css",sheet,i;
+      var fileref = document.createElement("link");
+      fileref.setAttribute("rel", "stylesheet");
+      fileref.setAttribute("type", "text/css");
+      fileref.setAttribute("href", filename);
+
+
+      timerfunc = function (){
+          for (i=0;i<document.styleSheets.length;i++){
+              sheet = document.styleSheets[i].href;
+              if(sheet !== null && sheet.substr(sheet.length-filename.length) == filename)
+                  return readyfunc();
+          }
+          setTimeout(timerfunc,50);  
+      }
+
+      if (document.all){ 
+          fileref.attachEvent('onreadystatechange',function() {
+              if(fileref.readyState == 'complete' || fileref.readyState == 'loaded')
+                  readyfunc();
+          });
+      } else {
+          setTimeout(timerfunc,50);
+      }
+      document.getElementsByTagName("head")[0].appendChild(fileref);    
+  }
+
+	//белая тема
+	//white theme
+	//при клике на кнопку, включится эта тема
+    // when you click on the button, this theme will be turned on 
+  white.onclick = function (){
+      var filename = "white.css",sheet,i;
+      var fileref = document.createElement("link");
+
+      fileref.setAttribute("rel", "stylesheet");
+      fileref.setAttribute("type", "text/css");
+      fileref.setAttribute("href", filename);
+
+
+      timerfunc = function (){
+          for (i=0;i<document.styleSheets.length;i++){
+              sheet = document.styleSheets[i].href;
+              if(sheet !== null && sheet.substr(sheet.length-filename.length) == filename)
+                  return readyfunc();
+          }
+          setTimeout(timerfunc,50);  
+      }
+
+      if (document.all){
+          fileref.attachEvent('onreadystatechange',function() {
+              if(fileref.readyState == 'complete' || fileref.readyState == 'loaded')
+                  readyfunc();
+          });
+      } else {
+          setTimeout(timerfunc,50);
+      }
+      document.getElementsByTagName("head")[0].appendChild(fileref);    
+  }
+
+    </script>
+
+  </body>
